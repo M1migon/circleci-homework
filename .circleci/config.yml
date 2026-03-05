@@ -6,7 +6,10 @@ jobs:
       - image: cimg/python:3.12
     steps:
       - checkout
-      - run: pip install flake8 black
+      - run:
+          name: install tools
+          command: |
+            pip install flake8 black
       - run: flake8 .
       - run: black --check .
 
@@ -15,7 +18,10 @@ jobs:
       - image: cimg/python:3.12
     steps:
       - checkout
-      - run: pip install pytest
+      - run:
+          name: install pytest
+          command: |
+            pip install pytest
       - run: pytest
 
   build:
@@ -23,11 +29,11 @@ jobs:
       - image: cimg/python:3.12
     steps:
       - checkout
-      - run: python -c "print('Build successful')"
+      - run: python -c "print('build ok')"
 
 workflows:
   version: 2
-  test_pipeline:
+  pipeline:
     jobs:
       - lint
       - test

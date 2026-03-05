@@ -1,4 +1,4 @@
-from text_stats import text_stats
+from src.text_stats import text_stats
 
 
 def test_empty_string():
